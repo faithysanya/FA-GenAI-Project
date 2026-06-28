@@ -3,6 +3,8 @@ Test script for document parsing module.
 Tests all parser functions and metadata extraction.
 """
 
+import sys
+
 from app.document_processing import (
     parse_document,
     parse_txt,
