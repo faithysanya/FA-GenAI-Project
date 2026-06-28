@@ -1,6 +1,6 @@
 """Custom exceptions for the AI Knowledge Support System"""
 
-from typing import Optional, List, Dict, Any
+from typing import Optional, List, Any
 from pydantic import BaseModel, Field
 from fastapi import HTTPException, status
 

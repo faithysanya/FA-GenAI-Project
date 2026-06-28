@@ -1,8 +1,7 @@
 """Embedding provider for generating text embeddings."""
 
 import logging
-import time
-from typing import List, Union
+from typing import List
 from sentence_transformers import SentenceTransformer
 
 logger = logging.getLogger(__name__)

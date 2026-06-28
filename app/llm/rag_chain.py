@@ -1,6 +1,5 @@
 """RAG (Retrieval-Augmented Generation) pipeline."""
 import logging
-from typing import Optional
 from app.llm.claude_client import claude_client
 from app.llm.prompts import RAG_SYSTEM_PROMPT, RAG_USER_TEMPLATE
 

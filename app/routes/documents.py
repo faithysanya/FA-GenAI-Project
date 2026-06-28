@@ -5,9 +5,8 @@ from typing import Optional, List
 import logging
 import os
 import uuid
-from datetime import datetime
 
-from app.models import DocumentUploadResponse, Document, DocumentStatus, DocumentMetadata
+from app.models import DocumentUploadResponse, Document, DocumentStatus
 from app.utils.exceptions import (
     InvalidFileError,
     FileSizeError,
@@ -111,22 +110,6 @@ async def upload_document(
 
         # Generate document ID
         document_id = f"doc_{uuid.uuid4().hex[:12]}"
-
-        # Parse tags
-        file_tags = [tag.strip() for tag in tags.split(",")] if tags else []
-
-        # Extract preview (first 500 chars)
-        try:
-            if file_extension == ".pdf":
-                # For PDF, would need PDF parsing library
-                content_preview = f"[PDF Document - {file_size} bytes]"
-            else:
-                content_preview = content.decode("utf-8", errors="ignore")[:500]
-        except Exception as e:
-            logger.warning(
-                f"[{request_id}] Could not extract preview: {str(e)}"
-            )
-            content_preview = f"[{file_extension} Document - {file_size} bytes]"
 
         logger.info(
             f"[{request_id}] Document validated successfully",

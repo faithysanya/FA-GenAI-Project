@@ -32,7 +32,7 @@ def reason(query: str, retrieval_results: list[dict]) -> dict:
 
     # Split raw output into reasoning steps and final answer
     lines = raw.strip().split("\n")
-    reasoning_steps = [l.strip() for l in lines if l.strip() and l.strip().startswith(("Step", "-", "•", "1.", "2.", "3."))]
+    reasoning_steps = [line.strip() for line in lines if line.strip() and line.strip().startswith(("Step", "-", "•", "1.", "2.", "3."))]
     final_answer = raw  # Use full response as answer
 
     logger.info(f"Reasoner produced {len(reasoning_steps)} reasoning steps")

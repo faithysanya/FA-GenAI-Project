@@ -1,6 +1,5 @@
 """Guardrails: response grounding checks and safety filters."""
 import logging
-from typing import Optional
 
 logger = logging.getLogger(__name__)
 

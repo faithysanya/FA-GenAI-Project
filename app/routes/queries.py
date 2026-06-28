@@ -16,7 +16,6 @@ from app.models import (
 )
 from app.utils.exceptions import (
     RetrievalError,
-    ValidationError,
     LLMError,
     NoResultsFoundError,
 )

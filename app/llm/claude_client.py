@@ -1,6 +1,5 @@
 """Claude LLM Client with mock fallback for development/testing."""
 import logging
-from typing import Optional
 from config.settings import settings
 
 logger = logging.getLogger(__name__)

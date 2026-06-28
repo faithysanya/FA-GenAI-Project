@@ -4,7 +4,6 @@ Tests semantic and fixed strategies, overlap, and edge cases.
 """
 
 import pytest
-import os
 from pathlib import Path
 
 from app.document_processing import chunk_text, chunk_document, Chunk

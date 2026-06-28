@@ -3,14 +3,6 @@ Test script for document parsing module.
 Tests all parser functions and metadata extraction.
 """
 
-import sys
-import os
-from pathlib import Path
-
-# Add the project root to the Python path
-project_root = Path(__file__).parent.parent
-sys.path.insert(0, str(project_root))
-
 from app.document_processing import (
     parse_document,
     parse_txt,
@@ -31,14 +23,14 @@ def test_parse_txt():
         print(f"\nTesting: {file_path}")
         text = parse_txt(file_path)
         
-        print(f"\n✓ Successfully parsed TXT file")
+        print("\n✓ Successfully parsed TXT file")
         print(f"  Text length: {len(text)} characters")
         print(f"  First 200 characters:\n{text[:200]}...")
         
         # Also test via parse_document
         text2 = parse_document(file_path)
         assert text == text2, "parse_document() result differs from parse_txt()"
-        print(f"✓ parse_document() with automatic type detection works")
+        print("✓ parse_document() with automatic type detection works")
         
         return True
     except Exception as e:
@@ -58,14 +50,14 @@ def test_parse_csv():
         print(f"\nTesting: {file_path}")
         text = parse_csv(file_path)
         
-        print(f"\n✓ Successfully parsed CSV file")
+        print("\n✓ Successfully parsed CSV file")
         print(f"  Text length: {len(text)} characters")
         print(f"\nFormatted output:\n{text[:500]}...")
         
         # Also test via parse_document
         text2 = parse_document(file_path)
         assert text == text2, "parse_document() result differs from parse_csv()"
-        print(f"\n✓ parse_document() with automatic type detection works")
+        print("\n✓ parse_document() with automatic type detection works")
         
         return True
     except Exception as e:
@@ -81,7 +73,6 @@ def test_parse_excel():
     
     # Create a simple Excel file for testing
     try:
-        import openpyxl
         from openpyxl import Workbook
         
         excel_path = "data/uploads/test_sample.xlsx"
@@ -112,7 +103,7 @@ def test_parse_excel():
         ws2.append(["Average Salary", sum(row[2] for row in data) / len(data)])
         
         wb.save(excel_path)
-        print(f"✓ Created test Excel file")
+        print("✓ Created test Excel file")
         
         # Now test parsing
         from app.document_processing import parse_excel
@@ -120,14 +111,14 @@ def test_parse_excel():
         print(f"\nParsing Excel file: {excel_path}")
         text = parse_excel(excel_path)
         
-        print(f"✓ Successfully parsed Excel file")
+        print("✓ Successfully parsed Excel file")
         print(f"  Text length: {len(text)} characters")
         print(f"\nFormatted output (first 600 chars):\n{text[:600]}...")
         
         # Also test via parse_document
         text2 = parse_document(excel_path)
         assert text == text2, "parse_document() result differs from parse_excel()"
-        print(f"\n✓ parse_document() with automatic type detection works")
+        print("\n✓ parse_document() with automatic type detection works")
         
         return True
     except ImportError:
@@ -150,7 +141,7 @@ def test_metadata_extraction():
         txt_file = "data/uploads/test_sample.txt"
         csv_file = "data/uploads/test_sample.csv"
         
-        print(f"\nExtracting metadata for TXT file:")
+        print("\nExtracting metadata for TXT file:")
         meta_txt = extract_metadata(txt_file, "txt")
         print(f"  Filename: {meta_txt.filename}")
         print(f"  File Size: {meta_txt.file_size} bytes ({meta_txt.file_size_mb} MB)")
@@ -158,14 +149,14 @@ def test_metadata_extraction():
         print(f"  Modified Date: {meta_txt.modified_date}")
         print(f"  Full Path: {meta_txt.full_path}")
         
-        print(f"\nExtracting metadata for CSV file:")
+        print("\nExtracting metadata for CSV file:")
         meta_csv = extract_metadata(csv_file, "csv")
         print(f"  Filename: {meta_csv.filename}")
         print(f"  File Size: {meta_csv.file_size} bytes ({meta_csv.file_size_mb} MB)")
         print(f"  File Type: {meta_csv.file_type}")
         print(f"  Modified Date: {meta_csv.modified_date}")
         
-        print(f"\n✓ Metadata extraction successful")
+        print("\n✓ Metadata extraction successful")
         
         return True
     except Exception as e:

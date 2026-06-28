@@ -2,9 +2,8 @@
 
 import pytest
 import logging
-from typing import List
 import numpy as np
-from unittest.mock import Mock, MagicMock, patch
+from unittest.mock import Mock
 
 from app.vector_db.retriever import Retriever, RetrieverConfig, RankingStrategy
 from app.vector_db.client import ChromaVectorStore

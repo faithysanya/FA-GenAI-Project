@@ -1,12 +1,11 @@
 """API endpoint tests for retrieval routes."""
 
 import pytest
-import json
-from unittest.mock import Mock, patch
+from unittest.mock import Mock
 from fastapi.testclient import TestClient
 
 from app.main import app
-from app.models import QueryRequest, RetrievalResult
+from app.models import RetrievalResult
 from app.routes.retrieval import initialize_retriever
 from app.vector_db.client import ChromaVectorStore
 from app.vector_db.embedding import EmbeddingProvider

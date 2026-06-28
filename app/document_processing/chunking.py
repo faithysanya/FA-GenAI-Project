@@ -167,7 +167,6 @@ def _fixed_chunk(text: str, max_chunk_size: int, overlap: int) -> List[Chunk]:
     chunks = []
     chunk_num = 0
     i = 0
-    min_progress = max(1, max_chunk_size - overlap)
     
     while i < len(tokens):
         end = min(i + max_chunk_size, len(tokens))
