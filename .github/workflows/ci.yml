@@ -50,7 +50,7 @@ jobs:
         run: |
           pip install --upgrade pip
           pip install fastapi uvicorn python-dotenv pydantic anthropic chromadb \
-                      PyPDF2 pandas openpyxl pydantic-settings \
+                      PyPDF2 pandas openpyxl chardet pydantic-settings \
                       pytest pytest-asyncio httpx
 
       - name: Create required directories and .env
